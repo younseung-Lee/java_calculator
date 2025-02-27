@@ -18,13 +18,14 @@ public class App {
             // Calculator 객체 생성
             // calculate() 메서드를 호출하여 연산 수행
             Calculator calculator = new Calculator(first, second, operator);
-            double result = calculator.calculate(); // 연산 결과를 double 타입으로 반환
-            System.out.println(first + " " + operator + " " + second + " = " + result);
+            calculator.calculate(); // 연산 결과를 double 타입으로 반환
+            System.out.println(first + " " + operator + " " + second + " = " + calculator.getResult());
+
+            calculator.removeFirstResult();
 
             // 종료 기능 추가
             calculator.exitCalculator(scanner);
 
-            scanner.close();
         }
     }
 }
