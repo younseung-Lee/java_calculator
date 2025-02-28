@@ -6,26 +6,34 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        //"exit"을 입력하기 전까지 계속해서 계산을 수행할 수 있도록 무한 루프를 사용
         while (true) {
-            System.out.print("첫 번째 숫자를 입력하세요: ");
-            double first = scanner.nextDouble(); // 첫 번째 숫자를 입력받아 first 변수에 저장
-            System.out.print("사칙연산 기호를 입력하세요 (+, -, /, *, %): ");
-            char operator = scanner.next().charAt(0); // char로 입력받기
-            System.out.print("두 번째 숫자를 입력하세요: ");
-            double second = scanner.nextDouble(); // 두 번째 숫자를 입력받아 second 변수에 저장
+            try {
+                System.out.print("첫 번째 숫자를 입력하세요: ");
+                double first = scanner.nextDouble();
+                System.out.print("사칙연산 기호를 입력하세요 (+, -, /, *, %): ");
+                char operator = scanner.next().charAt(0);
+                System.out.print("두 번째 숫자를 입력하세요: ");
+                double second = scanner.nextDouble();
 
-            // Calculator 객체 생성
-            // calculate() 메서드를 호출하여 연산 수행
-            Calculator calculator = new Calculator(first, second, operator);
-            calculator.calculate(); // 연산 결과를 double 타입으로 반환
-            System.out.println(first + " " + operator + " " + second + " = " + calculator.getResult());
+                // 객체 생성 및 계산 수행
+                Calculator calculator = new Calculator(first, second, operator);
+                double result = calculator.calculate();
 
-            calculator.removeFirstResult();
+                // 결과 출력
+                if (!Double.isNaN(result)) { // 오류 발생 시 출력 안 함
+                    System.out.println(first + " " + operator + " " + second + " = " + result);
+                }
 
-            // 종료 기능 추가
-            calculator.exitCalculator(scanner);
+                // 저장된 연산 결과 출력
+                System.out.println("저장 리스트 목록: " + calculator.getResults());
 
+                // 종료 기능 추가
+                calculator.exitCalculator(scanner);
+
+            } catch (Exception e) {
+                System.out.println("잘못된 입력입니다. 다시 시도하세요.");
+                scanner.nextLine(); // 잘못된 입력을 제거
+            }
         }
     }
 }
