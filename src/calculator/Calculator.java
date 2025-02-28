@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class Calculator {
     // 속성
-    private double first;
-    private double second;
-    private char operator;
+    private final double first;
+    private final double second;
+    private final char operator;
     private double result;
     private static final List<Double> resultList = new ArrayList<>(); // static으로 변경
 
@@ -19,7 +19,6 @@ public class Calculator {
         this.operator = operator;
     }
 
-    public Calculator() {}
 
 
     // 계산 수행 메서드 (예외 처리 추가)
@@ -73,73 +72,73 @@ public class Calculator {
     public List<Double> getResults() {
         return resultList;
     }
-    // 리스트 삭제 메서드
-    public void removeResult(Scanner scanner) {
-        if (!resultList.isEmpty()) { // 리스트가 비어 있지 않은 경우
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-            String remove = scanner.next();
-            if (remove.equalsIgnoreCase("remove")) {
-                resultList.remove(0); // 첫 번째 요소 삭제
-                System.out.println("가장 먼저 저장된 연산 결과가 삭제되었습니다.");
-            } else {
-                System.out.println("삭제가 취소되었습니다.");
-            }
-        } else {
-            System.out.println("삭제할 결과가 없습니다.");
-        }
-    }
+//    // 리스트 삭제 메서드
+//    public void removeResult(Scanner scanner) {
+//        if (!resultList.isEmpty()) { // 리스트가 비어 있지 않은 경우
+//            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+//            String remove = scanner.next();
+//            if (remove.equalsIgnoreCase("remove")) {
+//                resultList.remove(0); // 첫 번째 요소 삭제
+//                System.out.println("가장 먼저 저장된 연산 결과가 삭제되었습니다.");
+//            } else {
+//                System.out.println("삭제가 취소되었습니다.");
+//            }
+//        } else {
+//            System.out.println("삭제할 결과가 없습니다.");
+//        }
+//    }
 
     // 결과 리스트 값 변환 (세터)
-    public void setResult(Scanner scanner) {
-        if (resultList.isEmpty()) {
-            System.out.println("저장된 연산 결과가 없습니다.");
-            return;
-        }
-
-        System.out.println("수정할 연산 결과의 인덱스를 입력하세요 (0부터 입력)");
-        int index;
-        try {
-            index = scanner.nextInt();
-        } catch (Exception e) {
-            System.out.println("올바른 숫자를 입력하세요.");
-            scanner.nextLine(); // 입력 버퍼 정리
-            return;
-        }
-
-        if (index < 0 || index >= resultList.size()) {
-            System.out.println("유효하지 않은 인덱스입니다.");
-            return;
-        }
-
-        System.out.println("새로운 값을 입력하세요: ");
-        double newValue;
-
-        try {
-            newValue = scanner.nextDouble();
-        } catch (Exception e) {
-            System.out.println("올바른 숫자를 입력하세요.");
-            scanner.nextLine(); // 입력 버퍼 정리
-            return;
-        }
-
-        System.out.println("해당 값을 변경하시겠습니까? (yes 입력 시 변경)");
-        String confirm = scanner.next();
-        if (confirm.equalsIgnoreCase("yes")) {
-            resultList.set(index, newValue);
-            System.out.println("인덱스 " + index + "의 값이 " + newValue + "(으)로 변경되었습니다.");
-        } else {
-            System.out.println("변경이 취소되었습니다.");
-        }
-    }
-
-
-    // 종료 기능
-    public void exitCalculator(Scanner scanner) {
-        System.out.println("종료하려면 'exit' 입력, 계속하려면 아무 키나 입력: ");
-        String exit = scanner.next();
-        if (exit.equalsIgnoreCase("exit")) {
-            System.out.println("계산기를 종료합니다.");
-            System.exit(0);
-        }
-    }
+//    public void setResult(Scanner scanner) {
+//        if (resultList.isEmpty()) {
+//            System.out.println("저장된 연산 결과가 없습니다.");
+//            return;
+//        }
+//
+//        System.out.println("수정할 연산 결과의 인덱스를 입력하세요 (0부터 입력)");
+//        int index;
+//        try {
+//            index = scanner.nextInt();
+//        } catch (Exception e) {
+//            System.out.println("올바른 숫자를 입력하세요.");
+//            scanner.nextLine(); // 입력 버퍼 정리
+//            return;
+//        }
+//
+//        if (index < 0 || index >= resultList.size()) {
+//            System.out.println("유효하지 않은 인덱스입니다.");
+//            return;
+//        }
+//
+//        System.out.println("새로운 값을 입력하세요: ");
+//        double newValue;
+//
+//        try {
+//            newValue = scanner.nextDouble();
+//        } catch (Exception e) {
+//            System.out.println("올바른 숫자를 입력하세요.");
+//            scanner.nextLine(); // 입력 버퍼 정리
+//            return;
+//        }
+//
+//        System.out.println("해당 값을 변경하시겠습니까? (yes 입력 시 변경)");
+//        String confirm = scanner.next();
+//        if (confirm.equalsIgnoreCase("yes")) {
+//            resultList.set(index, newValue);
+//            System.out.println("인덱스 " + index + "의 값이 " + newValue + "(으)로 변경되었습니다.");
+//        } else {
+//            System.out.println("변경이 취소되었습니다.");
+//        }
+//    }
+//
+//
+//    // 종료 기능
+//    public void exitCalculator(Scanner scanner) {
+//        System.out.println("종료하려면 'exit' 입력, 계속하려면 아무 키나 입력: ");
+//        String exit = scanner.next();
+//        if (exit.equalsIgnoreCase("exit")) {
+//            System.out.println("계산기를 종료합니다.");
+//            System.exit(0);
+//        }
+//    }
 }

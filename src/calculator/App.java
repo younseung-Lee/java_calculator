@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ResultManager resultManager = new ResultManager();
+        ResultUpdate resultUpdate = new ResultUpdate();
+        ExitProgram exitProgram = new ExitProgram();
 
 
         while (true) {
@@ -28,13 +31,14 @@ public class App {
                 // 저장된 연산 결과 출력
                 System.out.println("저장 리스트 목록: " + calculator.getResults());
                 // 결과값 리스트 삭제
-                calculator.removeResult(scanner);
+                resultManager.removeResult(calculator.getResults(), scanner);
                 // 결과값 리스트 값 변환
-                calculator.setResult(scanner);
+                resultUpdate.setResult(calculator.getResults(), scanner);
                 // 저장된 연산 결과 출력
                 System.out.println("저장 리스트 목록: " + calculator.getResults());
+
                 // 종료 기능 추가
-                calculator.exitCalculator(scanner);
+                exitProgram.exitCalculator(scanner);
 
             } catch (Exception e) {
                 System.out.println("잘못된 입력입니다. 다시 시도하세요.");
