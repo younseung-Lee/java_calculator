@@ -6,6 +6,7 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+
         while (true) {
             try {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -26,7 +27,12 @@ public class App {
 
                 // 저장된 연산 결과 출력
                 System.out.println("저장 리스트 목록: " + calculator.getResults());
-
+                // 결과값 리스트 삭제
+                calculator.removeResult(scanner);
+                // 결과값 리스트 값 변환
+                calculator.setResult(scanner);
+                // 저장된 연산 결과 출력
+                System.out.println("저장 리스트 목록: " + calculator.getResults());
                 // 종료 기능 추가
                 calculator.exitCalculator(scanner);
 
@@ -34,6 +40,8 @@ public class App {
                 System.out.println("잘못된 입력입니다. 다시 시도하세요.");
                 scanner.nextLine(); // 잘못된 입력을 제거
             }
+
+
         }
     }
 }
