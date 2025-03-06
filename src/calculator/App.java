@@ -24,7 +24,7 @@ public class App {
                 System.out.print("두 번째 숫자를 입력하세요: ");
                 second = scanner.nextDouble();
 
-                // ArtimaticCalculator 클래스의 calculate() 메소드를 호출
+                // ArtimaticCalculator 클래스의 calculate() 메서드를 호출
                 double result = calc1.calculate(first, second, operator);
 
                 // 결과 출력
@@ -52,8 +52,9 @@ public class App {
             }
 
             // 종료 여부 확인
-            // ExitProgram 클래스의 exitCalculator() 메소드를 호출
+            // ExitProgram 클래스의 exitCalculator() 메서드를 호출
             exitProgram.exitCalculator(scanner);
+
         }
 
 

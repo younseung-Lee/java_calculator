@@ -36,14 +36,8 @@ public class ResultUpdate {
             scanner.nextLine(); // 입력 버퍼 정리
             return;
         }
-
-        System.out.println("해당 값을 변경하시겠습니까? (yes 입력 시 변경)");
-        String confirm = scanner.next();
-        if (confirm.equalsIgnoreCase("yes")) {
             resultList.set(index, newValue);
             System.out.println("인덱스 " + index + "의 값이 " + newValue + "(으)로 변경되었습니다.");
-        } else {
-            System.out.println("변경이 취소되었습니다.");
-        }
+
     }
 }
